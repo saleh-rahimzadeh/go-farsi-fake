@@ -46,6 +46,13 @@ func main() {
 		panic(err)
 	}
 	println(strPrg)
+
+	// Generate a range of farsi words as slice.
+	slc, err := ff.Range(9)
+	if err != nil {
+		panic(err)
+	}
+	println(slc)
 }
 ```
 

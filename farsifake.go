@@ -130,6 +130,25 @@ func (o FarsiFake) Generate() (string, error) {
 	return "", nil
 }
 
+// Generate a range of farsi words.
+func (o FarsiFake) Range(count int) ([]string, error) {
+	if count < 1 {
+		return nil, ErrInvalidCount
+	}
+
+	words := make([]string, 0, count)
+
+	for range count {
+		word, err := o.Generate()
+		if err != nil {
+			return nil, ErrGenerate
+		}
+		words = append(words, word)
+	}
+
+	return words, nil
+}
+
 // Generate a sentence with the specified number of farsi words.
 func (o FarsiFake) Sentence(count int) (string, error) {
 	if count < 1 {
