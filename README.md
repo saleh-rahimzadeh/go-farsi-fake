@@ -26,10 +26,32 @@ func main() {
 	}
 	defer ff.Close()
 
+	// Generate a random farsi word.
 	str, err := ff.Generate()
 	if err != nil {
 		panic(err)
 	}
 	println(str)
+
+	// Generate a sentence with the specified number of farsi words.
+	strSnt, err := ff.Sentence(5)
+	if err != nil {
+		panic(err)
+	}
+	println(strSnt)
+
+	// Generate a paragraph with a random number of sentences between min and max.
+	strPrg, err := ff.Paragraph(3, 7)
+	if err != nil {
+		panic(err)
+	}
+	println(strPrg)
 }
+```
+
+Options:
+
+```go
+ff.JumpFromStart = false
+ff.BypassError = false
 ```
